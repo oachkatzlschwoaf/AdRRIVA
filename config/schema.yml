@@ -1,0 +1,251 @@
+propel:
+  _attributes:
+    package: lib.model
+    defaultIdMethod: native
+  account:
+    _attributes: { phpName: Account }
+    id: { phpName: Id, type: INTEGER, size: '11', primaryKey: true, autoIncrement: true, required: true }
+    user_id: { phpName: UserId, type: INTEGER, size: '11', required: true, foreignTable: user, foreignReference: id, onDelete: CASCADE, onUpdate: CASCADE }
+    balance: { phpName: Balance, type: INTEGER, size: '7', required: true }
+    status: { phpName: Status, type: INTEGER, size: '3', required: true }
+    _indexes: { user_id: [user_id] }
+  action:
+    _attributes: { phpName: Action }
+    id: { phpName: Id, type: INTEGER, size: '11', primaryKey: true, autoIncrement: true, required: true }
+    hash: { phpName: Hash, type: VARCHAR, size: '4', required: true }
+    time: { phpName: Time, type: INTEGER, size: '11', required: true }
+    ua_id: { phpName: UaId, type: INTEGER, size: '11', required: true, foreignTable: user_advertise, foreignReference: id, onDelete: CASCADE, onUpdate: CASCADE }
+    cost: { phpName: Cost, type: INTEGER, size: '7', required: true }
+    social_network: { phpName: SocialNetwork, type: INTEGER, size: '3', required: true }
+    _indexes: { ua_id: [ua_id], hash: [hash], hash_2: [hash, ua_id], social_network: [social_network] }
+  advertise:
+    _attributes: { phpName: Advertise }
+    id: { phpName: Id, type: INTEGER, size: '11', primaryKey: true, autoIncrement: true, required: true }
+    type: { phpName: Type, type: INTEGER, size: '3', required: true }
+    owner_id: { phpName: OwnerId, type: INTEGER, size: '11', required: true, foreignTable: user, foreignReference: id, onDelete: CASCADE, onUpdate: CASCADE }
+    category_id: { phpName: CategoryId, type: INTEGER, size: '11', required: true, foreignTable: advertise_catalog, foreignReference: id, onDelete: CASCADE, onUpdate: CASCADE }
+    status: { phpName: Status, type: INTEGER, size: '3', required: true }
+    subject: { phpName: Subject, type: VARCHAR, size: '100', required: true }
+    text: { phpName: Text, type: VARCHAR, size: '300', required: true }
+    image: { phpName: Image, type: VARCHAR, size: '300', required: true }
+    html: { phpName: Html, type: LONGVARCHAR, required: true }
+    url: { phpName: Url, type: VARCHAR, size: '300', required: true }
+    cost: { phpName: Cost, type: INTEGER, size: '5', required: true }
+    agents: { phpName: Agents, type: INTEGER, size: '7', required: true }
+    created_at: { phpName: CreatedAt, type: TIMESTAMP, required: true }
+    updated_at: { phpName: UpdatedAt, type: TIMESTAMP, required: true }
+    _indexes: { CategoryId: [category_id], TypeStatus: [type, status], owner_id: [owner_id] }
+  advertise_catalog:
+    _attributes: { phpName: AdvertiseCatalog }
+    id: { phpName: Id, type: INTEGER, size: '11', primaryKey: true, autoIncrement: true, required: true }
+    parent_id: { phpName: ParentId, type: INTEGER, size: '11', required: false }
+    name: { phpName: Name, type: VARCHAR, size: '100', required: true }
+    min_cost: { phpName: MinCost, type: INTEGER, size: '5', required: true }
+    order_id: { phpName: OrderId, type: INTEGER, size: '5', required: true }
+    _indexes: { parent_id: [parent_id] }
+  agent_last_action:
+    _attributes: { phpName: AgentLastAction }
+    id: { phpName: Id, type: INTEGER, size: '11', primaryKey: true, autoIncrement: true, required: true }
+    user_id: { phpName: UserId, type: INTEGER, size: '11', required: true }
+    ua_id: { phpName: UaId, type: INTEGER, size: '11', required: true }
+    social_network: { phpName: SocialNetwork, type: INTEGER, size: '3', required: true }
+    action_time: { phpName: ActionTime, type: TIMESTAMP, required: true }
+    _indexes: { user_id: [user_id, ua_id] }
+  click:
+    _attributes: { phpName: Click }
+    id: { phpName: Id, type: INTEGER, size: '11', primaryKey: true, autoIncrement: true, required: true }
+    time: { phpName: Time, type: INTEGER, size: '11', required: true }
+    processed: { phpName: Processed, type: INTEGER, size: '11', required: true }
+    user_id: { phpName: UserId, type: INTEGER, size: '11', required: true }
+    advert_id: { phpName: AdvertId, type: INTEGER, size: '11', required: true }
+    clicker_email: { phpName: ClickerEmail, type: VARCHAR, size: '100', required: false }
+    ua_id: { phpName: UaId, type: INTEGER, size: '11', required: true }
+    ad_id: { phpName: AdId, type: INTEGER, size: '11', required: true }
+    aid: { phpName: Aid, type: INTEGER, size: '11', required: true }
+    ip: { phpName: Ip, type: INTEGER, size: '10', required: true }
+    subnet: { phpName: Subnet, type: INTEGER, size: '10', required: false }
+    ref: { phpName: Ref, type: VARCHAR, size: '100', required: false }
+    no_cookie: { phpName: NoCookie, type: INTEGER, size: '1', required: true }
+    cost: { phpName: Cost, type: INTEGER, size: '100', required: true }
+    social_network: { phpName: SocialNetwork, type: INTEGER, size: '3', required: true }
+    status: { phpName: Status, type: INTEGER, size: '3', required: true }
+  fast_click:
+    _attributes: { phpName: FastClick }
+    id: { phpName: Id, type: INTEGER, size: '11', primaryKey: true, autoIncrement: true, required: true }
+    time: { phpName: Time, type: INTEGER, size: '11', required: true }
+    ua_id: { phpName: UaId, type: INTEGER, size: '10', required: true }
+    a_hash: { phpName: AHash, type: VARCHAR, size: '8', required: true }
+    ad_id: { phpName: AdId, type: INTEGER, size: '10', required: true }
+    user_id: { phpName: UserId, type: INTEGER, size: '10', required: true }
+    advert_id: { phpName: AdvertId, type: INTEGER, size: '10', required: true }
+    ip: { phpName: Ip, type: INTEGER, size: '10', required: false }
+    subnet: { phpName: Subnet, type: INTEGER, size: '10', required: false }
+    ref: { phpName: Ref, type: VARCHAR, size: '100', required: true }
+    last_click_time: { phpName: LastClickTime, type: INTEGER, size: '11', required: false }
+    no_cookie: { phpName: NoCookie, type: INTEGER, size: '1', required: true }
+    _indexes: { time: [time] }
+  incoming_funds:
+    _attributes: { phpName: IncomingFunds }
+    id: { phpName: Id, type: INTEGER, size: '11', primaryKey: true, autoIncrement: true, required: true }
+    to_account: { phpName: ToAccount, type: INTEGER, size: '11', required: true }
+    amount: { phpName: Amount, type: INTEGER, size: '7', required: true }
+    money: { phpName: Money, type: INTEGER, size: '11', required: true }
+    status: { phpName: Status, type: INTEGER, size: '3', required: true }
+    created_at: { phpName: CreatedAt, type: TIMESTAMP, required: true }
+    updated_at: { phpName: UpdatedAt, type: TIMESTAMP, required: true }
+  outgoing_funds:
+    _attributes: { phpName: OutgoingFunds }
+    id: { phpName: Id, type: INTEGER, size: '11', primaryKey: true, autoIncrement: true, required: true }
+    time: { phpName: Time, type: TIMESTAMP, required: true }
+    approved_at: { phpName: ApprovedAt, type: TIMESTAMP, required: false }
+    account_id: { phpName: AccountId, type: INTEGER, size: '11', required: true, foreignTable: account, foreignReference: id, onDelete: CASCADE, onUpdate: CASCADE }
+    user_id: { phpName: UserId, type: INTEGER, size: '11', required: true, foreignTable: user, foreignReference: id, onDelete: CASCADE, onUpdate: CASCADE }
+    amount: { phpName: Amount, type: INTEGER, size: '7', required: true }
+    money: { phpName: Money, type: INTEGER, size: '7', required: true }
+    status: { phpName: Status, type: INTEGER, size: '3', required: true }
+    currency: { phpName: Currency, type: INTEGER, size: '3', required: true }
+    emoney_id: { phpName: EmoneyId, type: VARCHAR, size: '300', required: true }
+    comment: { phpName: Comment, type: LONGVARCHAR, required: true }
+    _indexes: { account_id: [account_id], user_id: [user_id] }
+  stat_activity_daily:
+    _attributes: { phpName: StatActivityDaily }
+    id: { phpName: Id, type: INTEGER, size: '11', required: true }
+    date: { phpName: Date, type: INTEGER, size: '11', required: true }
+    shares: { phpName: Shares, type: INTEGER, size: '11', required: true }
+    clicks: { phpName: Clicks, type: INTEGER, size: '11', required: true }
+    clicks_shares: { phpName: ClicksShares, type: FLOAT, required: true }
+    avg_share_agents: { phpName: AvgShareAgents, type: FLOAT, required: true }
+    avg_share_active_agents: { phpName: AvgShareActiveAgents, type: FLOAT, required: true }
+    avg_clicks_agents: { phpName: AvgClicksAgents, type: FLOAT, required: true }
+    avg_clicks_active_agents: { phpName: AvgClicksActiveAgents, type: FLOAT, required: true }
+    advertise_catalog: { phpName: AdvertiseCatalog, type: FLOAT, required: true }
+    active_advertise: { phpName: ActiveAdvertise, type: FLOAT, required: true }
+    active_unactive_advertise: { phpName: ActiveUnactiveAdvertise, type: FLOAT, required: true }
+    advertise_shares: { phpName: AdvertiseShares, type: FLOAT, required: true }
+    advertise_clicks: { phpName: AdvertiseClicks, type: FLOAT, required: true }
+    active_advertise_shares: { phpName: ActiveAdvertiseShares, type: FLOAT, required: true }
+    active_advertise_clicks: { phpName: ActiveAdvertiseClicks, type: FLOAT, required: true }
+    advertise_adverts: { phpName: AdvertiseAdverts, type: FLOAT, required: true }
+    _uniques: { date: [date] }
+  stat_advert_daily:
+    _attributes: { phpName: StatAdvertDaily }
+    id: { phpName: Id, type: INTEGER, size: '11', primaryKey: true, autoIncrement: true, required: true }
+    date: { phpName: Date, type: DATE, required: true }
+    clicks: { phpName: Clicks, type: INTEGER, size: '7', required: true }
+    points: { phpName: Points, type: INTEGER, size: '7', required: true }
+    advert_id: { phpName: AdvertId, type: INTEGER, size: '11', required: true, foreignTable: user, foreignReference: id, onDelete: CASCADE, onUpdate: CASCADE }
+    ad_id: { phpName: AdId, type: INTEGER, size: '11', required: true, foreignTable: advertise, foreignReference: id, onDelete: CASCADE, onUpdate: CASCADE }
+    _indexes: { advert_id: [advert_id], ad_id: [ad_id] }
+    _uniques: { date: [date, advert_id, ad_id] }
+  stat_agent_daily:
+    _attributes: { phpName: StatAgentDaily }
+    id: { phpName: Id, type: INTEGER, size: '11', primaryKey: true, autoIncrement: true, required: true }
+    date: { phpName: Date, type: DATE, required: true }
+    user_id: { phpName: UserId, type: INTEGER, size: '11', required: true, foreignTable: user, foreignReference: id, onDelete: CASCADE, onUpdate: CASCADE }
+    ua_id: { phpName: UaId, type: INTEGER, size: '11', required: true, foreignTable: user_advertise, foreignReference: id, onDelete: CASCADE, onUpdate: CASCADE }
+    clicks: { phpName: Clicks, type: INTEGER, size: '7', required: true }
+    points: { phpName: Points, type: INTEGER, size: '7', required: true }
+    _indexes: { user_id: [user_id], ua_id: [ua_id] }
+    _uniques: { date: [date, user_id, ua_id] }
+  stat_auditory_daily:
+    _attributes: { phpName: StatAuditoryDaily }
+    id: { phpName: Id, type: INTEGER, size: '11', primaryKey: true, autoIncrement: true, required: true }
+    date: { phpName: Date, type: DATE, required: true }
+    users: { phpName: Users, type: INTEGER, size: '11', required: true }
+    agents: { phpName: Agents, type: INTEGER, size: '11', required: true }
+    adverts: { phpName: Adverts, type: INTEGER, size: '11', required: true }
+    active_agents: { phpName: ActiveAgents, type: INTEGER, size: '11', required: true }
+    active_adverts: { phpName: ActiveAdverts, type: INTEGER, size: '11', required: true }
+    new_users: { phpName: NewUsers, type: INTEGER, size: '11', required: true }
+    new_agents: { phpName: NewAgents, type: INTEGER, size: '11', required: true }
+    new_adverts: { phpName: NewAdverts, type: INTEGER, size: '11', required: true }
+    _uniques: { date: [date] }
+  stat_global_hours:
+    _attributes: { phpName: StatGlobalHours }
+    id: { phpName: Id, type: INTEGER, size: '11', primaryKey: true, autoIncrement: true, required: true }
+    date_hour: { phpName: DateHour, type: TIMESTAMP, required: true }
+    clicks: { phpName: Clicks, type: INTEGER, size: '11', required: true }
+    actions: { phpName: Actions, type: INTEGER, size: '11', required: true }
+    points: { phpName: Points, type: INTEGER, size: '11', required: true }
+    fee: { phpName: Fee, type: INTEGER, size: '7', required: true }
+    invalid_clicks: { phpName: InvalidClicks, type: INTEGER, size: '11', required: true }
+    _uniques: { date_hour: [date_hour] }
+  stat_money_daily:
+    _attributes: { phpName: StatMoneyDaily }
+    id: { phpName: Id, type: INTEGER, size: '11', primaryKey: true, autoIncrement: true, required: true }
+    date: { phpName: Date, type: DATE, required: true }
+    turnover: { phpName: Turnover, type: INTEGER, size: '11', required: true }
+    turnover_points: { phpName: TurnoverPoints, type: INTEGER, size: '11', required: true }
+    revenue: { phpName: Revenue, type: INTEGER, size: '11', required: true }
+    revenue_points: { phpName: RevenuePoints, type: INTEGER, size: '11', required: true }
+    pay_count: { phpName: PayCount, type: INTEGER, size: '11', required: true }
+    avg_check: { phpName: AvgCheck, type: FLOAT, required: true }
+    avg_check_points: { phpName: AvgCheckPoints, type: FLOAT, required: true }
+    incoming_funds: { phpName: IncomingFunds, type: INTEGER, size: '11', required: true }
+    incoming_funds_points: { phpName: IncomingFundsPoints, type: INTEGER, size: '11', required: true }
+    outgoing_funds: { phpName: OutgoingFunds, type: INTEGER, size: '11', required: true }
+    outgoing_funds_points: { phpName: OutgoingFundsPoints, type: INTEGER, size: '11', required: true }
+    diff_funds: { phpName: DiffFunds, type: INTEGER, size: '11', required: true }
+    diff_funds_points: { phpName: DiffFundsPoints, type: INTEGER, size: '11', required: true }
+    avg_agent_revenue: { phpName: AvgAgentRevenue, type: FLOAT, required: true }
+    avg_agent_revenue_points: { phpName: AvgAgentRevenuePoints, type: FLOAT, required: true }
+    avg_advert_cost: { phpName: AvgAdvertCost, type: FLOAT, required: true }
+    avg_advert_cost_points: { phpName: AvgAdvertCostPoints, type: FLOAT, required: true }
+    avg_active_agent_revernue: { phpName: AvgActiveAgentRevernue, type: FLOAT, required: true }
+    avg_active_agent_revenue_points: { phpName: AvgActiveAgentRevenuePoints, type: FLOAT, required: true }
+    avg_active_advert_cost: { phpName: AvgActiveAdvertCost, type: FLOAT, required: true }
+    avg_active_advert_cost_points: { phpName: AvgActiveAdvertCostPoints, type: FLOAT, required: true }
+    avg_click_cost: { phpName: AvgClickCost, type: FLOAT, required: true }
+    avg_click_cost_points: { phpName: AvgClickCostPoints, type: FLOAT, required: true }
+    avg_click_revenue: { phpName: AvgClickRevenue, type: FLOAT, required: true }
+    avg_click_revenue_points: { phpName: AvgClickRevenuePoints, type: FLOAT, required: true }
+    arpu: { phpName: Arpu, type: FLOAT, required: true }
+    arpu_points: { phpName: ArpuPoints, type: FLOAT, required: true }
+    _uniques: { date: [date] }
+  transaction:
+    _attributes: { phpName: Transaction }
+    id: { phpName: Id, type: INTEGER, size: '11', primaryKey: true, autoIncrement: true, required: true }
+    created_at: { phpName: CreatedAt, type: TIMESTAMP, required: true }
+    points: { phpName: Points, type: INTEGER, size: '7', required: true }
+    amount: { phpName: Amount, type: INTEGER, size: '7', required: true }
+    fee: { phpName: Fee, type: INTEGER, size: '7', required: true }
+    from: { phpName: From, type: INTEGER, size: '11', required: true }
+    to: { phpName: To, type: INTEGER, size: '11', required: true }
+    from_user: { phpName: FromUser, type: INTEGER, size: '11', required: true }
+    to_user: { phpName: ToUser, type: INTEGER, size: '11', required: true }
+    invoice_id: { phpName: InvoiceId, type: INTEGER, size: '11', required: true }
+  user:
+    _attributes: { phpName: User }
+    id: { phpName: Id, type: INTEGER, size: '11', primaryKey: true, autoIncrement: true, required: true }
+    name: { phpName: Name, type: VARCHAR, size: '100', required: true }
+    role: { phpName: Role, type: INTEGER, size: '3', required: false }
+    status: { phpName: Status, type: INTEGER, size: '3', required: true }
+    email: { phpName: Email, type: VARCHAR, size: '100', required: true }
+    password: { phpName: Password, type: VARCHAR, size: '100', required: true }
+    created_at: { phpName: CreatedAt, type: TIMESTAMP, required: true }
+    updated_at: { phpName: UpdatedAt, type: TIMESTAMP, required: true }
+    visit_at: { phpName: VisitAt, type: TIMESTAMP, required: true }
+    ip_register: { phpName: IpRegister, type: BIGINT, size: '11', required: false }
+    ip_last: { phpName: IpLast, type: BIGINT, size: '11', required: false }
+    last_action: { phpName: LastAction, type: INTEGER, size: '11', required: false }
+    _indexes: { Role: [role], Status: [status], ip_last: [ip_last], ip_register: [ip_register] }
+    _uniques: { Email: [email] }
+  user_activate:
+    _attributes: { phpName: UserActivate }
+    user_id: { phpName: UserId, type: INTEGER, size: '11', required: true }
+    code: { phpName: Code, type: VARCHAR, size: '255', primaryKey: true, required: true }
+    created_at: { phpName: CreatedAt, type: TIMESTAMP, required: true }
+    _uniques: { user_id: [user_id] }
+  user_advertise:
+    _attributes: { phpName: UserAdvertise }
+    id: { phpName: Id, type: INTEGER, size: '11', primaryKey: true, autoIncrement: true, required: true }
+    user_id: { phpName: UserId, type: INTEGER, size: '11', required: true, foreignTable: user, foreignReference: id, onDelete: CASCADE, onUpdate: CASCADE }
+    advert_id: { phpName: AdvertId, type: INTEGER, size: '11', required: true }
+    advertise_id: { phpName: AdvertiseId, type: INTEGER, size: '11', required: true, foreignTable: advertise, foreignReference: id, onDelete: CASCADE, onUpdate: CASCADE }
+    status: { phpName: Status, type: INTEGER, size: '3', required: true }
+    url: { phpName: Url, type: VARCHAR, size: '300', required: true }
+    secret: { phpName: Secret, type: VARCHAR, size: '50', required: true }
+    created_at: { phpName: CreatedAt, type: TIMESTAMP, required: true }
+    updated_at: { phpName: UpdatedAt, type: TIMESTAMP, required: true }
+    _indexes: { UserId: [user_id], AdvertiseId: [advertise_id] }
+    _uniques: { user_id: [user_id, advertise_id] }

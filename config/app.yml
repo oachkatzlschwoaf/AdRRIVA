@@ -1,0 +1,104 @@
+# default values
+all:  
+    application_id: 422248 
+    private_key:    'af862b31f49f4088cecccf2fcdd9b771'
+    secret_key:     '66ac3ebdcb215278bcc97f381d2f63b1'
+    api_url:        'http://www.appsmail.ru/platform/api'
+
+    # CHANGE!!!
+    redirect_url: '193.169.33.196/adrriva_site/go'
+    thumbnail_path: 'http://193.169.33.196/adrriva_site/uploads/'
+
+    point_ruble_course: 0.5
+    point_min_transfer: 100
+    point_min_price: 2
+
+    fee: 0
+    platform_fee: 30
+
+    user_status:
+        new: 0 
+        banned: 10 
+
+    user_role:
+        agent: 1
+        advert: 10
+
+    advertise_status:
+        new: 0
+        work: 10
+        advert_block: 20
+        admin_block: 30
+        money_block: 40
+
+    advertise_type:
+        share: 1 
+
+    ad_images_dir:
+        share: 'share_images'
+
+    ad_images_size:
+        share_width: 110
+        share_height: 75
+
+    account_status:
+        work: 0
+        block: 10
+
+    user_ad_status:
+        work: 0
+        agent_block: 10
+        advert_block: 20
+
+    user_ad_secret: 'gamova'
+
+    rate_limit_check: 1
+    rate_limit_ua: 86400
+    rate_limit_stream: 3600 
+    rate_limit_network: 14400 
+
+    fraud_check: 0 
+    fraud_wait_period: 86400
+
+    click_status:
+        approved: 1
+        decline: 10
+
+    incoming_funds_status:
+        new: 1
+        work: 10
+        done: 20
+        fail: 30
+
+    outgoing_funds_status:
+        new: 1
+        approved: 10
+        done: 20
+        fail: 30
+
+    emoney_id:
+        dmr: 1
+        wmr: 2
+        ym:  3
+
+    emoney_name:
+        1: "Деньги@Mail.Ru"
+        2: "WebMoney WMR"
+        3: "Яндекс Деньги"
+
+    emoney_robox:
+        1: "MoneyMailR"
+        2: "WMR"
+        3: "PCR"
+
+    social_network:
+        vk: 1
+        ok: 2
+        fb: 3
+        mm: 4
+
+    robox:
+        url: 'http://test.robokassa.ru/Index.aspx'
+        login: 'trueoffice'
+        pass1: 'r0ir@3cn'
+        pass2: 'r0irf3cn'
