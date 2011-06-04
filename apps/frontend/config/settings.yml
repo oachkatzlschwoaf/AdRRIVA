@@ -4,7 +4,7 @@
 prod:
   .settings:
     no_script_name:         true
-    logging_enabled:        false
+    logging_enabled:        true 
 
 dev:
   .settings:
@@ -33,6 +33,7 @@ all:
 
     # Enable the database manager
     use_database:           true
+
   .actions:
     login_module: default
     login_action: login

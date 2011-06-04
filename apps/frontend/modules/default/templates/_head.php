@@ -1,7 +1,7 @@
 <?php include_partial('default/top_line') ?>
 <div class='back_head'>
     <div class='content_container mt_10'>
-        <a href="<?php print url_for('default/index'); ?>" id='logo_big'></a>
+        <a href="<?php print url_for('@homepage'); ?>" id='logo_big'></a>
         <div style='overflow: hidden'>
             <h1 class='ph_1'>
                 <?php if ($title == 1): ?>
@@ -20,6 +20,10 @@
                     Восстановление<br />пароля
                 <?php elseif ($title == 8): ?>
                     Обратная<br />связь
+                <?php elseif ($title == 9): ?>
+                    Подробнее<br />для рекламодателей
+                <?php elseif ($title == 10): ?>
+                    Подробнее для<br />пользователей социальных сетей 
                 <?php endif; ?>
             </h1>
 

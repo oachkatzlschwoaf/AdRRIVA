@@ -28,13 +28,13 @@
             Вы должны активизировать ваш аккаунт в течение 24 часов.
         </div>
         <div class='mt_10'>
-            <?php print link_to("Перейти к форме логина &rarr;", "default/login"); ?>
+            <?php print link_to("Перейти к форме логина &rarr;", "@login"); ?>
         </div>
     </div>
 
     <div id="register_container">
         Для регистрации в системе вы должны указать:
-        <form id='register_form' method='post' action='<?php print $role == 'advert' ? url_for('default/registerAdvert') : url_for('default/registerAgent'); ?>'>
+        <form id='register_form' method='post' action='<?php print $role == 'advert' ? url_for('@advert_register') : url_for('@agent_register'); ?>'>
             <ul class='ul_none'>
                 <li class='mb_10'>
                     <div class='d_ib w_200 ta_r'>
@@ -67,7 +67,7 @@
             <input type="submit" value="Зарегистрироваться" style='margin-left: 266px'  class="green_input_button mt_10" />
         </form>
         <div class='l_side text_header mt_10' style='margin-left: 266px' >
-            <?php print link_to('У вас уже есть логин?', 'default/login'); ?>
+            <?php print link_to('У вас уже есть логин?', '@login'); ?>
         </div>
     </div>
 </div>

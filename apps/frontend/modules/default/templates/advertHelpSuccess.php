@@ -1,4 +1,4 @@
-<?php include_partial('head', array('title' => 2, 'sub' => 3)) ?>
+<?php include_partial('head', array('title' => 9, 'sub' => 3)) ?>
 
 <div class='content_container mt_10'>
     <div class='l_side text_header ta_r'>
@@ -73,7 +73,7 @@
             "<a href="http://my.mail.ru" target="_blank">Мой мир@Mail.Ru</a>".
             <br />
             <br />
-            <a href="<?php print url_for("default/registerAdvert"); ?>" class='green_button mt_20 ml_80'>
+            <a href="<?php print url_for("@advert_register"); ?>" class='green_button mt_20 ml_80'>
                 <div>Дать объявление!</div>
             </a>
         </div>

@@ -1,7 +1,7 @@
 <div class='back_menu_head'>
     <div id="top_login">
         <?php if (!$sf_user->isAuthenticated()): ?>
-            <form id='top_login_form' method='post' action='<?php print url_for('default/login'); ?>'>
+            <form id='top_login_form' method='post' action='<?php print url_for('@login'); ?>'>
                 <div id='enter_label' class='gray_1 mr_10'>
                     Вход в систему:
                 </div>
@@ -12,6 +12,7 @@
                 <div class='mr_5'>
                     Пароль:
                     <input name="login_password" id="login_password" type="password" maxlength="40" minlength="6" class='required' />
+                    (<?php print link_to('забыли?', '@password_remember'); ?>)
                 </div>
                 <div>
                     <input type="submit" value="Войти" class="small_login_button" />
@@ -28,7 +29,7 @@
                 </div>
                 <div class="auth_line">
                     Вы авторизованы: <?php print $sf_user->getAttribute('email'); ?>
-                    <input type="submit" value="Выйти" class="small_login_button ml_20" onclick="window.location='<?php print url_for('default/logout'); ?>'" />
+                    <input type="submit" value="Выйти" class="small_login_button ml_20" onclick="window.location='<?php print url_for('@logout'); ?>'" />
                 </div>
             </div>
         <?php endif; ?>

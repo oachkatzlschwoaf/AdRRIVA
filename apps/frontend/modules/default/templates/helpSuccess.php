@@ -85,12 +85,12 @@
 </div>
 <div class='content_container mt_20'>
     <div class='l_side text_header ta_r'>
-        <a href="<?php print url_for("default/registerAdvert"); ?>" class='green_button ml_20'>
+        <a href="<?php print url_for("@advert_register"); ?>" class='green_button ml_20'>
             <div>Дать объявление!</div>
         </a>
     </div>
     <div class='r_side text_header'>
-        <a href="<?php print url_for("default/registerAgent"); ?>" class='green_button'>
+        <a href="<?php print url_for("@agent_register"); ?>" class='green_button'>
             <div>Начать зарабатывать!</div>
         </a>
     </div>

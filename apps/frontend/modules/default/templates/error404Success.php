@@ -9,7 +9,7 @@
     <div class='ta_c'>
         <?php print image_tag("http://share.auditory.ru/2009/Roman.Novikov/ceiling_cat.png") ?>
     </div>
-    <a href="<?php print url_for("default/index"); ?>" class='green_button mt_40' style='margin-left: 300px'>
+    <a href="<?php print url_for("@homepage"); ?>" class='green_button mt_40' style='margin-left: 300px'>
         <div>На главную!</div>
     </a>
 </div>

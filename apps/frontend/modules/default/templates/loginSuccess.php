@@ -11,7 +11,7 @@
 <div class='content_container text_big mt_40'>
     <div id="general_error" class='register_error mb_20' style='display:none'>
     </div>
-    <form id='login_form' method='post' action='<?php print url_for('default/login'); ?>'>
+    <form id='login_form' method='post' action='<?php print url_for('@login'); ?>'>
         <ul class='ul_none'>
             <li class='mb_10'>
                 <div class='d_ib w_200 ta_r'>
@@ -35,9 +35,9 @@
         <input type="submit" value="Войти" style='margin-left: 266px'  class="green_input_button mt_10" />
     </form>
     <div class='l_side text_header mt_10' style='margin-left: 266px' >
-        <div class='mt_10'><?php print link_to('Регистрация агента', 'default/registerAgent'); ?></div>
-        <div class='mt_5'><?php print link_to('Регистрация рекламодателя', 'default/registerAdvert'); ?></div>
-        <div class='mt_5'><?php print link_to('Вы забыли пароль?', 'default/rememberPassword'); ?></div>
+        <div class='mt_10'><?php print link_to('Регистрация агента', '@agent_register'); ?></div>
+        <div class='mt_5'><?php print link_to('Регистрация рекламодателя', '@advert_register'); ?></div>
+        <div class='mt_5'><?php print link_to('Вы забыли пароль?', '@password_remember'); ?></div>
     </div>
 </div>
 

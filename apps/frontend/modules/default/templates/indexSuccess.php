@@ -5,7 +5,7 @@
         <br />
         Это инновационная рекламная система, работающая внутри 
         <br />
-        социальной сети. <?php print link_to('Подробнее &rarr;', 'default/help'); ?>
+        социальной сети. <?php print link_to('Подробнее &rarr;', '@help'); ?>
     </div>
     <div class='r_side text_header'>
         20 000 000 человек ежедневно посещают социальные сети в Рунете.
@@ -29,24 +29,24 @@
         <div class='mh_70'>
             Я <b>рекламодатель</b> &mdash; я хочу рекламировать свой сайт в социальных сетях. 
         </div>
-        <a href="<?php print url_for("default/registerAdvert"); ?>" class='green_button mt_20 ml_20'>
+        <a href="<?php print url_for("@advert_register"); ?>" class='green_button mt_20 ml_20'>
             <div>Дать объявление!</div>
         </a>
         <div class='text_header mt_10 gray_1'>
             Узнать подробнее как можно размещать рекламу в социальных сетях, используя систему AdRRIVA,
-            <?php print link_to('можно здесь &rarr;', 'default/advertHelp'); ?>
+            <?php print link_to('можно здесь &rarr;', '@advert_help'); ?>
         </div>
     </div>
     <div class='r_side'>
         <div class='mh_70'>
             Я <b>пользователь социальной сети</b> &mdash; я хочу зарабатывать деньги в социальной сети, размещая рекламные ссылки.
         </div>
-        <a href="<?php print url_for("default/registerAgent"); ?>" class='green_button mt_20 ml_80'>
+        <a href="<?php print url_for("@agent_register"); ?>" class='green_button mt_20 ml_80'>
             <div>Начать зарабатывать!</div>
         </a>
         <div class='text_header mt_10 gray_1'>
             Подробнее ознакомиться с возможностями заработка в социальных сетях, при помощи системы AdRRIVA, 
-            <?php print link_to('можно здесь &rarr;', 'default/agentHelp'); ?>
+            <?php print link_to('можно здесь &rarr;', '@agent_help'); ?>
         </div>
     </div>
 </div>

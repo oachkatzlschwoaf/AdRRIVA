@@ -6,6 +6,45 @@ homepage:
   url:   /
   param: { module: default, action: index }
 
+# AdRRIVA rules
+
+# Index page (default)
+help:
+  url: /help
+  param: { module: default, action: help }
+
+advert_help:
+  url: /advert_help
+  param: { module: default, action: advertHelp }
+
+agent_help:
+  url: /agent_help
+  param: { module: default, action: agentHelp }
+
+advert_register:
+  url: /advert_registration
+  param: { module: default, action: registerAdvert }
+
+agent_register:
+  url: /agent_registration
+  param: { module: default, action: registerAgent }
+
+feedback:
+  url: /feedback
+  param: { module: default, action: feedback }
+
+login:
+  url: /login
+  param: { module: default, action: login }
+
+logout:
+  url: /logout
+  param: { module: default, action: logout }
+
+password_remember:
+  url: /password_remember
+  param: { module: default, action: rememberPassword }
+
 # generic rules
 # please, remove them by adding more specific rules
 default_index:
@@ -14,3 +53,4 @@ default_index:
 
 default:
   url:   /:module/:action/*
+

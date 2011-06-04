@@ -19,10 +19,10 @@
             <div class='text_header mt_10'>
                 &copy; 2011 AdRRIVA 
                 <span style='margin-left: 20px'>
-                    <?php print link_to('О системе', 'default/help'); ?>
+                    <?php print link_to('О системе', '@help'); ?>
                 </span>
                 <span style='margin-left: 10px'>
-                    <?php print link_to('Обратная связь', 'default/feedback'); ?>
+                    <?php print link_to('Обратная связь', '@feedback'); ?>
                 </span>
             </div>
         </div>

@@ -9,7 +9,7 @@
     <div class='ta_c'>
         <?php print image_tag("http://3.bp.blogspot.com/_8-YiLpKU6oo/TEgv6if6aBI/AAAAAAAABU4/PDqwcMmDo4M/s1600/cat-limits-your-computer-access.jpg") ?>
     </div>
-    <a href="<?php print url_for("default/index"); ?>" class='green_button mt_40' style='margin-left: 300px'>
+    <a href="<?php print url_for("@homepage"); ?>" class='green_button mt_40' style='margin-left: 300px'>
         <div>На главную!</div>
     </a>
 </div>

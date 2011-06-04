@@ -1,4 +1,4 @@
-<?php include_partial('head', array('title' => 2, 'sub' => 4)) ?>
+<?php include_partial('head', array('title' => 10, 'sub' => 4)) ?>
 
 <div class='content_container mt_10'>
     <div class='l_side text_header ta_r'>
@@ -50,7 +50,7 @@
             Мы предлагаем для вывода самые популярные электронные валюты: WebMoney, Яндекс.Деньги и Деньги@Mail.Ru.
             <br />
             <br />
-            <a href="<?php print url_for("default/registerAgent"); ?>" class='green_button mt_20 ml_80'>
+            <a href="<?php print url_for("@agent_register"); ?>" class='green_button mt_20 ml_80'>
                 <div>Начать зарабатывать!</div>
             </a>
             

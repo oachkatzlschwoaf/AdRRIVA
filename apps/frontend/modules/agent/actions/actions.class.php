@@ -186,6 +186,8 @@ class agentActions extends sfActions {
 
             $ad_c->add(AdvertisePeer::STATUS, sfConfig::get('app_advertise_status_work'));
 
+            $response = $this->getResponse();
+            $response->setTitle( 'AdRRIVA - Каталог рекламы: '.$this->selected_cat->getName() );
 
 
         } elseif ($this->show == 'category' && !$this->category) {

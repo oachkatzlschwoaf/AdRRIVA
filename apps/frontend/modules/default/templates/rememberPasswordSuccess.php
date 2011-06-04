@@ -3,7 +3,7 @@
     <div class='l_side text_header ta_r'>
         <?php print link_to('&larr; Назад', '@homepage'); ?>
         <br />
-        <?php print link_to('&larr; К форме логина', 'default/login'); ?>
+        <?php print link_to('&larr; К форме логина', '@login'); ?>
     </div>
     <div class='r_side text_header'>
         Для восстановления пароля необходимо указать ваш e-mail.
@@ -14,13 +14,13 @@
     <div id="general_success" class='register_success mb_20' style='display: none'>
         Ваш новый пароль был отправлен вам на e-mail.        
         <div class='mt_10'>
-            <?php print link_to("Перейти к форме логина &rarr;", "default/login"); ?>
+            <?php print link_to("Перейти к форме логина &rarr;", "@login"); ?>
         </div>
     </div>
 
     <div id="general_error" class='register_error mb_20' style='display:none'>
     </div>
-    <form id='remember_form' method='post' action='<?php print url_for('default/rememberPassword'); ?>'>
+    <form id='remember_form' method='post' action='<?php print url_for('@password_remember'); ?>'>
         <ul class='ul_none'>
             <li class='mb_10'>
                 <div class='d_ib w_200 ta_r'>

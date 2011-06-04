@@ -12,14 +12,14 @@
         <div id="general_error" class='register_error mb_20'>
             Ваш аккаунт уже был активирован!  
             <div class='mt_10'>
-                <?php print link_to("Перейти к форме логина &rarr;", "default/login"); ?>
+                <?php print link_to("Перейти к форме логина &rarr;", "@login"); ?>
             </div>
         </div>
     <?php else: ?>
         <div id="general_success" class='register_success mb_20'>
             <b>Поздравляем!</b> Вы активировали аккаунт и полностью завершили регистрацию в AdRRIVA! 
             <div class='mt_10'>
-                <?php print link_to("Перейти к форме логина &rarr;", "default/login"); ?>
+                <?php print link_to("Перейти к форме логина &rarr;", "@login"); ?>
             </div>
         </div>
     <?php endif; ?>
