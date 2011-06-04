@@ -248,4 +248,11 @@ http://www.adrriva.ru'
 
     }
 
+    public function executeError404() {
+
+    }
+
+    public function executeSecure() {
+
+    }
 }

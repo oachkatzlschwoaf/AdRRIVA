@@ -405,4 +405,8 @@ class agentActions extends sfActions {
 
         return $this->renderText(json_encode( array('message' => 'post_error') ));
     }
+
+    public function executeSecure() {
+
+    }
 }
