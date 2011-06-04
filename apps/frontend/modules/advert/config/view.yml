@@ -1,0 +1,13 @@
+helpSuccess:
+  metas: 
+    title: 'AdRRIVA - Помощь' 
+
+statisticsSuccess:
+  metas: 
+    title: 'AdRRIVA - Статистика за 30 дней' 
+
+all:
+  metas: 
+    title: 'AdRRIVA - Система управления рекламой' 
+    description: 'AdRRIVA - реклама и заработок в социальных сетях: Вконтакте, Одноклассники, Facebook, Мой мир'
+    keywords: 'AdRRIVA, реклама, социальная сеть, заработок в интернет, вконтакте, vkontakte, одноклассники, мой мир, facebook'

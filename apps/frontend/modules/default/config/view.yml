@@ -1,0 +1,37 @@
+rememberPasswordSuccess:
+  metas: 
+    title: 'AdRRIVA - Восстановление пароля' 
+
+loginSuccess:
+  metas: 
+    title: 'AdRRIVA - Вход в систему' 
+
+registerAgentSuccess:
+  metas: 
+    title: 'AdRRIVA - Регистрация рекламного агента: начните зарабатывать в интернет и социальных сетях' 
+
+registerAdvertSuccess:
+  metas: 
+    title: 'AdRRIVA - Регистрация рекламодателя: начните рекламировать свой сайт в социальных сетях' 
+
+feedbackSuccess:
+  metas: 
+    title: 'AdRRIVA - Обратная связь' 
+
+helpSuccess:
+  metas: 
+    title: 'AdRRIVA - Подробнее о рекламе и заработке в социальных сетях: Вконтакте, Одноклассники, Facebook, Мой мир' 
+
+agentHelpSuccess:
+  metas: 
+    title: 'Пользователям социальных сетей AdRRIVA - Заработок в интернет и социальных сетях: Вконтакте, Facebook, Одноклассники, Мой мир' 
+
+advertHelpSuccess:
+  metas: 
+    title: 'Рекламодателям AdRRIVA - Реклама в социальных сетях: Вконтакте, Одноклассники, Facebook, Мой мир' 
+
+all:
+  metas: 
+    title: 'AdRRIVA - Рекламная сеть в социальной сети' 
+    description: 'AdRRIVA - реклама и заработок в социальных сетях: Вконтакте, Одноклассники, Facebook, Мой мир'
+    keywords: 'AdRRIVA, реклама, социальная сеть, заработок в интернет, вконтакте, vkontakte, одноклассники, мой мир, facebook'
