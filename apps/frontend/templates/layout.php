@@ -17,11 +17,26 @@
     <?php else: ?>
         <div id='footer'>
             <div class='text_header mt_10'>
-                &copy; 2011 AdRRIVA 
-                <span style='margin-left: 20px'>
+                <span>
+                    &copy; 2011 AdRRIVA 
+                </span>
+                <span class='ml_20'>
+<!--LiveInternet counter--><script type="text/javascript"><!--
+document.write("<a href='http://www.liveinternet.ru/click' "+
+"target=_blank><img src='//counter.yadro.ru/hit?t26.2;r"+
+escape(document.referrer)+((typeof(screen)=="undefined")?"":
+";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?
+screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
+";"+Math.random()+
+"' alt='' title='LiveInternet: показано число посетителей за"+
+" сегодня' "+
+"border='0' width='88' height='15'><\/a>")
+//--></script><!--/LiveInternet-->
+                </span>
+                <span class='ml_20'>
                     <?php print link_to('О системе', '@help'); ?>
                 </span>
-                <span style='margin-left: 10px'>
+                <span class='ml_10'>
                     <?php print link_to('Обратная связь', '@feedback'); ?>
                 </span>
             </div>
