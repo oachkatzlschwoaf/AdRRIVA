@@ -9,6 +9,14 @@ homepage:
 # AdRRIVA rules
 
 # Index page (default)
+advertise:
+  url: /advertise
+  param: { module: default, action: showAdvertise }
+
+error:
+  url: /error
+  param: { module: default, action: showError }
+
 help:
   url: /help
   param: { module: default, action: help }

@@ -232,12 +232,14 @@ http://www.adrriva.ru'
         $response = $this->getResponse();
 
         $ua_id = $request->getParameter('ua_id'); 
-
         $ua = UserAdvertisePeer::retrieveByPk($ua_id);
-        $this->ad = $ua->getAdvertise();
-        
-        $response->setTitle($this->ad->getSubject());
-        $response->addMeta('description', $this->ad->getText());
+
+        if ($ua) {
+            $this->ad = $ua->getAdvertise();
+            
+            $response->setTitle($this->ad->getSubject());
+            $response->addMeta('description', $this->ad->getText());
+        }
     }
 
     public function executeFeedback(sfWebRequest $request) {

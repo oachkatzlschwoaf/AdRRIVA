@@ -65,10 +65,10 @@
         } else if (data.message == 'success') {
 
         if (data.role == "1") {
-        window.location = "http://193.169.33.196/adrriva_site/agent";
+        window.location = "/adrriva_site/agent";
 
         } else if (data.role == "10") {
-        window.location = "http://193.169.33.196/adrriva_site/advert";
+        window.location = "/adrriva_site/advert";
 
         }
 

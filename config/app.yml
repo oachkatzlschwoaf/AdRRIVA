@@ -1,11 +1,8 @@
-# default values
-all:  
-    application_id: 422248 
-    private_key:    'af862b31f49f4088cecccf2fcdd9b771'
-    secret_key:     '66ac3ebdcb215278bcc97f381d2f63b1'
-    api_url:        'http://www.appsmail.ru/platform/api'
+prod:
+    redirect_url: 'adrriva.ru/go'
+    thumbnail_path: 'http://adrriva.ru/uploads/'
 
-    # CHANGE!!!
+all:  
     redirect_url: '193.169.33.196/adrriva_site/go'
     thumbnail_path: 'http://193.169.33.196/adrriva_site/uploads/'
 

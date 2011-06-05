@@ -13,8 +13,8 @@
     $GLOBALS["ua_cookie_secret"] = 'g@m0v@';
     $GLOBALS["ua_cookie_expire"] = 31 * 24 * 60 * 60;
     $GLOBALS["click_duration"]   = 20;
-    $GLOBALS["site_url"]         = "http://193.169.33.196/adrriva_site/default/showError";
-    $GLOBALS["adv_url"]          = "http://193.169.33.196/adrriva_site/default/showAdvertise";
+    $GLOBALS["site_url"]         = "http://adrriva.ru/error";
+    $GLOBALS["adv_url"]          = "http://adrriva.ru/advertise";
 
     $GLOBALS["user_ad_status_work"] = 0;
 
