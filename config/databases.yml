@@ -1,6 +1,18 @@
 # You can find more information about this file on the symfony website:
 # http://www.symfony-project.org/reference/1_4/en/07-Databases
 
+prod:
+  propel:
+    class:        sfPropelDatabase
+    param:
+      classname:  PropelPDO
+      dsn:        mysql:dbname=adriva;host=192.168.8.18
+      username:   adriva
+      password:   ymPR4JPf 
+      encoding:   utf8
+      persistent: true
+      pooling:    true
+
 dev:
   propel:
     param:
