@@ -45,5 +45,9 @@ all:
     param:
       delivery_strategy: realtime 
       transport:
-        class: Swift_MailTransport
-
+        class: Swift_SmtpTransport
+        param: 
+          host: mail.homestyle.ru
+          port: 25
+          username: support@adrriva.ru
+          password: g6u2NXnmR

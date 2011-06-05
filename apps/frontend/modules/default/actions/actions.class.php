@@ -130,7 +130,7 @@ class defaultActions extends sfActions {
 
         # Send message
         $message = $this->getMailer()->composeAndSend(
-            'advert_support@adrriva.ru',
+            'support@adrriva.ru',
             $this->email,
             'Ваш код подтверждения аккаунта',
             'Спасибо за регистрацию в AdRRIVA!
