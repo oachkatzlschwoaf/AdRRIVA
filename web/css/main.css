@@ -127,6 +127,10 @@ s
     margin-bottom: 20px;
 }
 
+.mt_60 {
+    margin-top: 60px;
+}
+
 .mt_40 {
     margin-top: 40px;
 }
@@ -398,6 +402,11 @@ s
 .register_success {
     border: 1px solid #57940d;
     color: #57940d;
+    padding: 10px;
+}
+
+.register_loader {
+    color: #999999;
     padding: 10px;
 }
 

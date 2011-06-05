@@ -15,6 +15,11 @@
 <div class='content_container text_big mt_40'>
     <div id="general_error" class='register_error mb_20' style='display:none'>
     </div>
+    <div id="register_loader" class='register_loader mt_40 ta_c' style='display: none'>
+        <b>Подождите: </b> идет процесс регистрации
+        <div class='mt_40'><?php print image_tag('loader.gif'); ?></div>
+    </div>
+
     <div id="general_success" class='register_success mb_20' style='display: none'>
         <b>Поздравляем!</b> 
         <?php if ($role == 'advert'): ?>
@@ -87,6 +92,8 @@
             },
             errorElement: "span",
             submitHandler: function(form) { 
+                $("#register_container").hide();    
+                $("#register_loader").show();    
                 jQuery(form).ajaxSubmit(options); 
                 return false; 
             }
@@ -95,17 +102,17 @@
     });
 
     function register (data) {
+        $("#register_loader").hide();    
 
         if (data.message == 'already_exists') {
-            $("#general_error").show();    
             $("#general_error").text("E-mail адрес "+data.email+" уже зарегистрирован в системе.");    
+            $("#general_error").show();    
 
         } else if (data.message == 'error') {
-            $("#general_error").show();    
             $("#general_error").text("Регистрация временно недоступна. Пожалуйста, повторите попытку через несколько часов.");    
+            $("#general_error").show();    
 
         } else if (data.message == 'success') {
-            $("#register_container").hide();    
             $("#general_success").show();    
         }
     }
