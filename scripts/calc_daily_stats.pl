@@ -215,6 +215,7 @@ $db_path  ||= '/home/roma/adrriva/site/config/databases.yml';
 $config    = loadConfig($app_path);
 $db_config = loadConfig($db_path, { 'encode_brackets' => 1 });
 $env ||= 'all';
+$days    = 1;
 
 my $dsn     = $db_config->[0]{$env}{'propel'}{'param'}{'dsn'};
 my $db_user = $db_config->[0]{$env}{'propel'}{'param'}{'username'};
@@ -222,7 +223,7 @@ my $db_pass = $db_config->[0]{$env}{'propel'}{'param'}{'password'};
 
 # Detect date
 my $dt_to = DateTime->now();
-my $dt_from = $dt_to->clone->subtract( days => 1 );
+my $dt_from = $dt_to->clone->subtract( days => $days );
 
 my $db_link = DBI->connect(
     'DBI:'.$dsn, 
