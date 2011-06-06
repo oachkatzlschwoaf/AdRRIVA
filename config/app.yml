@@ -95,7 +95,7 @@ all:
         mm: 4
 
     robox:
-        url: 'http://test.robokassa.ru/Index.aspx'
+        url: 'https://merchant.roboxchange.com/Index.aspx'
         login: 'trueoffice'
         pass1: 'r0ir@3cn'
         pass2: 'r0irf3cn'
