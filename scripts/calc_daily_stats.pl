@@ -8,17 +8,35 @@ use DateTime;
 use YAML::Tiny;
 use Net::SMTP;
 use Data::Dumper;
-
+use Getopt::Long;
 use MIME::Lite; 
 
 $|++;
 
 my $config;
+my $db_config;
 
 sub loadConfig {
-    my ($file) = @_;
+    my ($file, $options) = @_;
 
-    my $yaml = YAML::Tiny->read($file);
+    my $yaml;
+    if ($options->{'encode_brackets'}) {
+
+        my $fp;
+        open $fp, $file;
+        my $yaml_str = '';
+        $yaml_str .= $_ while (<$fp>); 
+        close $fp;
+    
+        $yaml_str =~ s/{/'{/gm;
+        $yaml_str =~ s/}/}'/gm;
+
+        $yaml = YAML::Tiny->read_string($yaml_str);
+
+    } else {
+        $yaml = YAML::Tiny->read($file);
+    }
+
     return $yaml;
 }
 
@@ -182,17 +200,34 @@ sub calcMoneyStat {
 }
 
 # MAIN
+my ($days, $app_path, $db_path, $env);
 
-$config = loadConfig('/home/roma/adrriva/main/config/app.yml');
+GetOptions(
+    "days=s"     => \$days,
+    "app_path=s" => \$app_path,
+    "db_path=s"  => \$db_path,
+    "env=s"      => \$env,
+);
+
+$app_path ||= '/home/roma/adrriva/site/config/app.yml';
+$db_path  ||= '/home/roma/adrriva/site/config/databases.yml';
+
+$config    = loadConfig($app_path);
+$db_config = loadConfig($db_path, { 'encode_brackets' => 1 });
+$env ||= 'all';
+
+my $dsn     = $db_config->[0]{$env}{'propel'}{'param'}{'dsn'};
+my $db_user = $db_config->[0]{$env}{'propel'}{'param'}{'username'};
+my $db_pass = $db_config->[0]{$env}{'propel'}{'param'}{'password'};
 
 # Detect date
 my $dt_to = DateTime->now();
 my $dt_from = $dt_to->clone->subtract( days => 1 );
 
 my $db_link = DBI->connect(
-    'DBI:mysql:ADRRIVA:localhost', 
-    'root', 
-    'yfldjhtnhfdf'
+    'DBI:'.$dsn, 
+    $db_user, 
+    $db_pass 
 );
 
 $db_link->do("set names 'utf8'");
