@@ -6,7 +6,10 @@ use warnings;
 use DBI;
 use DateTime;
 use YAML::Tiny;
+use Net::SMTP;
 use Data::Dumper;
+
+use MIME::Lite; 
 
 $|++;
 
@@ -45,25 +48,37 @@ sub calcActivityStat {
     # Clicks / Shares
 
     my $clicks_shares = $shares ? sprintf("%.2f", ($clicks / $shares)) : 0;
-    
-    # Save
-    print "\nSave activity stat";
-    print "\n---------------";
-    print "\nShares: $shares";
-    print "\nClicks: $clicks";
-    print "\nClicks/Shares: $clicks_shares";
 
+    # Advertise in catalog
+    $query = "select count(id) clicks from advertise where status = ".
+        $config->[0]{'all'}{'advertise_status'}{'work'};
+    $eq = $dbl->prepare($query);
+    $eq->execute;
+
+    my ($advertise_catalog) = $eq->fetchrow_array;
+    
+    # Do Report 
+    my $report = '';
+    $report .= "\n\nActivity statistic";
+    $report .= "\n-------------------";
+    $report .= "\nShares: $shares";
+    $report .= "\nClicks: $clicks";
+    $report .= "\nClicks/Shares: $clicks_shares";
+    $report .= "\nAdvertise in catalog: $advertise_catalog";
+
+    # Save stat
     $query = "insert into
-    stat_activity_daily (`date`, `clicks`, `shares`, `clicks_shares`)
-    values($d_str_from, $clicks, $shares, $clicks_shares) 
+    stat_activity_daily (`date`, `clicks`, `shares`, `clicks_shares`, `advertise_catalog`)
+    values($d_str_from, $clicks, $shares, $clicks_shares, $advertise_catalog) 
     on duplicate key update
     clicks = values(clicks),
     shares = values(shares),
-    clicks_shares = values(clicks_shares)";
+    clicks_shares = values(clicks_shares),
+    advertise_catalog = values(advertise_catalog)";
 
     $dbl->do($query);
 
-    return;
+    return $report;
 }
 
 sub calcAuditoryStat {
@@ -96,13 +111,15 @@ sub calcAuditoryStat {
 
     my ($agents) = $eq->fetchrow_array;
 
-    # Save
-    print "\nSave auditory stat";
-    print "\n---------------";
-    print "\nUsers: $users";
-    print "\nAdverts: $adverts";
-    print "\nAgents: $agents";
+    # Do report 
+    my $report = '';
+    $report .= "\n\nAuditory statistic";
+    $report .= "\n-------------------";
+    $report .= "\nUsers: $users";
+    $report .= "\nAdverts: $adverts";
+    $report .= "\nAgents: $agents";
 
+    # Save stat
     $query = "insert into
     stat_auditory_daily (`date`, `users`, `adverts`, `agents`)
     values($d_str_from, $users, $adverts, $agents) 
@@ -113,7 +130,7 @@ sub calcAuditoryStat {
 
     $dbl->do($query);
 
-    return;
+    return $report;
 }
 
 sub calcMoneyStat {
@@ -135,14 +152,21 @@ sub calcMoneyStat {
     $eq->execute;
 
     my ($turnover_points, $revenue_points) = $eq->fetchrow_array;
+    $turnover_points ||= 0;
+    $revenue_points  ||= 0;
+
     my ($turnover, $revenue) = (int($turnover_points * $course), int($revenue_points * $course)); 
+    $turnover        ||= 0;
+    $revenue         ||= 0;
 
-    # Save
-    print "\nSave money stat";
-    print "\n---------------";
-    print "\nTurnover: $turnover ($turnover_points)";
-    print "\nRevenue: $revenue ($revenue_points)";
+    # Do report
+    my $report = '';
+    $report .= "\n\nMoney statistic";
+    $report .= "\n-------------------";
+    $report .= "\nTurnover: $turnover ($turnover_points)";
+    $report .= "\nRevenue: $revenue ($revenue_points)";
 
+    # Save stat
     $query = "insert into
     stat_money_daily (`date`, `turnover`, `turnover_points`, `revenue`, `revenue_points`)
     values($d_str_from, $turnover, $turnover_points, $revenue, $revenue_points) 
@@ -154,7 +178,7 @@ sub calcMoneyStat {
 
     $dbl->do($query);
 
-    return;
+    return $report;
 }
 
 # MAIN
@@ -173,7 +197,19 @@ my $db_link = DBI->connect(
 
 $db_link->do("set names 'utf8'");
 
-calcMoneyStat($db_link, $dt_from, $dt_to);
-calcAuditoryStat($db_link, $dt_from, $dt_to);
-calcActivityStat($db_link, $dt_from, $dt_to);
+my $money_report = calcMoneyStat($db_link, $dt_from, $dt_to);
+my $aud_report   = calcAuditoryStat($db_link, $dt_from, $dt_to);
+my $act_report   = calcActivityStat($db_link, $dt_from, $dt_to);
+
+my $report = join(" ", ($money_report, $aud_report, $act_report));
+
+# Send email
+my $msg = MIME::Lite->new(
+    From    => 'support@adrriva.ru',
+    To      => 'roman.olegovich.novikov@gmail.com',
+    Subject => 'AdRRIVA Daily Report',
+    Data    => $report 
+);
+
+$msg->send('smtp', 'mail.homestyle.ru', AuthUser => 'support@adrriva.ru', AuthPass => 'g6u2NXnmR', Debug => 1);
 
