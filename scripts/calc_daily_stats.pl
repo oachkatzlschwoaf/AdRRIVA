@@ -247,5 +247,5 @@ my $msg = MIME::Lite->new(
     Data    => $report 
 );
 
-$msg->send('smtp', 'mail.homestyle.ru', AuthUser => 'support@adrriva.ru', AuthPass => 'g6u2NXnmR', Debug => 1);
+$msg->send('smtp', 'mail.homestyle.ru', AuthUser => 'support@adrriva.ru', AuthPass => 'g6u2NXnmR');
 
